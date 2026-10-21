@@ -67,4 +67,4 @@ The instrument is MediaPipe Face Landmarker, pinned to version 1.1.1, the same o
 ##Credits
 Aden Sulit, John Kiim
 Signal: Mic
-https://github.com/jkiim29-stack/sound-up.git
+https://jkiim29-stack.github.io/sound-up/
