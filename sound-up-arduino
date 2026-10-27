@@ -1,0 +1,77 @@
+
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_RESET -1
+#define OLED_ADDRESS 0x3C
+
+const int MIC_PIN = A0;
+
+Adafruit_SSD1306 display(
+  SCREEN_WIDTH, SCREEN_HEIGHT,
+  &Wire, OLED_RESET
+);
+
+int measureSoundLevel() {
+  int signalMin = 1023;
+  int signalMax = 0;
+
+  unsigned long start = millis();
+
+  while (millis() - start < 50) {
+    int sample = analogRead(MIC_PIN);
+
+    if (sample < signalMin) signalMin = sample;
+    if (sample > signalMax) signalMax = sample;
+  }
+
+  return signalMax - signalMin;
+}
+
+void setup() {
+  Serial.begin(9600);
+
+  if (!display.begin(
+        SSD1306_SWITCHCAPVCC, OLED_ADDRESS)) {
+    while (true) {
+      // Check OLED wiring and address.
+    }
+  }
+
+  display.clearDisplay();
+  display.setTextColor(SSD1306_WHITE);
+  display.display();
+}
+
+void loop() {
+  int level = measureSoundLevel();
+
+  Serial.println(level);
+
+  display.clearDisplay();
+
+  display.setTextSize(1);
+  display.setCursor(0, 0);
+  display.println("SOUND LEVEL");
+
+  display.setTextSize(2);
+  display.setCursor(0, 16);
+  display.print(level);
+
+  display.drawRect(0, 44, 120, 12, SSD1306_WHITE);
+
+  // Display a relative level, not calibrated decibels.
+  int barWidth = constrain(map(level, 0, 100, 0, 116),
+                           0, 116);
+
+  display.fillRect(2, 46, barWidth, 8, SSD1306_WHITE);
+
+  display.setTextSize(1);
+  display.setCursor(0, 58);
+  display.println("Relative level");
+
+  display.display();
+}
