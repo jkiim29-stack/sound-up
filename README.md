@@ -64,7 +64,7 @@ Nothing saves a frame or a landmark list. The model downloads once when you clic
 
 The instrument is MediaPipe Face Landmarker, pinned to version 1.1.1, the same one the Make a Face lab used.
 
-##Credits
-Aden Sulit, John Kiim
+ ##Credits
+Aden Sulit, John Kiim, Carter Schmal
 Signal: Mic
-https://github.com/jkiim29-stack/sound-up.git
+https://jkiim29-stack.github.io/sound-up/
