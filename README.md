@@ -69,4 +69,4 @@ Aden Sulit, John Kiim
 Signal: Mic
 https://jkiim29-stack.github.io/sound-up/
 
-Sound up, Readings at the edge, LINE, GAP, Hold, Visitor learns it by speaking or making noice, Piece uses led to convey sound levels, Aden Sulit.
+Wiring - Aden Sulit  
