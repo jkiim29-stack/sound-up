@@ -25,5 +25,5 @@ Aden Sulit, John Kiim
 Signal: Mic
 https://jkiim29-stack.github.io/sound-up/
 
-Wiring - Aden Sulit  
+Wiring - Aden Sulit   
 Coding - John Kiim
